@@ -49,6 +49,14 @@
         "operationId": "AdminEventsController_listEvents",
         "parameters": [
           {
+            "name": "x-admin-password",
+            "required": true,
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "page",
             "required": true,
             "in": "query",
@@ -67,7 +75,14 @@
         ],
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminListEventsQueryOutput"
+                }
+              }
+            }
           }
         },
         "tags": [
@@ -194,6 +209,14 @@
             }
           },
           {
+            "name": "x-admin-password",
+            "required": true,
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "page",
             "required": true,
             "in": "query",
@@ -212,7 +235,14 @@
         ],
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminListInvitationsQueryOutput"
+                }
+              }
+            }
           }
         },
         "tags": [
@@ -1030,6 +1060,102 @@
           }
         }
       },
+      "AdminEventDto": {
+        "type": "object",
+        "properties": {
+          "pricingType": {
+            "type": "string",
+            "enum": [
+              "fixed",
+              "split"
+            ]
+          },
+          "pricingValue": {
+            "type": "number",
+            "nullable": true
+          },
+          "links": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "startDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "endDate": {
+            "format": "date-time",
+            "type": "string",
+            "nullable": true
+          },
+          "startTime": {
+            "type": "string"
+          },
+          "endTime": {
+            "type": "string"
+          },
+          "orientacoes": {
+            "type": "string"
+          },
+          "deadline": {
+            "format": "date-time",
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "pricingType",
+          "pricingValue",
+          "links",
+          "id",
+          "name",
+          "location",
+          "startDate",
+          "endDate",
+          "startTime",
+          "endTime",
+          "orientacoes",
+          "deadline",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "AdminListEventsQueryOutput": {
+        "type": "object",
+        "properties": {
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdminEventDto"
+            }
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "events",
+          "total"
+        ]
+      },
       "AppEventDto": {
         "type": "object",
         "properties": {
@@ -1125,6 +1251,157 @@
         "required": [
           "eventId",
           "guestName"
+        ]
+      },
+      "AdminInvitationGuestDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "isChild": {
+            "type": "boolean"
+          },
+          "age": {
+            "type": "number",
+            "nullable": true
+          },
+          "hasDietaryRestriction": {
+            "type": "boolean"
+          },
+          "dietaryRestrictionDescription": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "isChild",
+          "age",
+          "hasDietaryRestriction",
+          "dietaryRestrictionDescription"
+        ]
+      },
+      "AdminInvitationParticipantDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "document": {
+            "type": "string"
+          },
+          "shifts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "acceptsImageUsage": {
+            "type": "boolean"
+          },
+          "hasDietaryRestriction": {
+            "type": "boolean"
+          },
+          "dietaryRestrictionDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "guests": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdminInvitationGuestDto"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "email",
+          "phone",
+          "shifts",
+          "acceptsImageUsage",
+          "hasDietaryRestriction",
+          "dietaryRestrictionDescription",
+          "guests"
+        ]
+      },
+      "AdminInvitationDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "guestName": {
+            "type": "string"
+          },
+          "guestPhone": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "hasParticipant": {
+            "type": "boolean"
+          },
+          "participant": {
+            "$ref": "#/components/schemas/AdminInvitationParticipantDto"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "eventId",
+          "code",
+          "guestName",
+          "status",
+          "hasParticipant",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "AdminListInvitationsQueryOutput": {
+        "type": "object",
+        "properties": {
+          "invitations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdminInvitationDto"
+            }
+          },
+          "total": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "invitations",
+          "total"
         ]
       },
       "AppInvitationDto": {
