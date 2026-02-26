@@ -19,7 +19,11 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "seed": "ts-node src/shared/database/seed.ts",
-    "generate:openapi": "nest build && node dist/generate-openapi.js"
+    "generate:openapi": "nest build && node dist/generate-openapi.js",
+    "migration:generate": "nest build && npx typeorm migration:generate -d dist/shared/database/data-source.js",
+    "migration:run": "nest build && npx typeorm migration:run -d dist/shared/database/data-source.js",
+    "migration:revert": "nest build && npx typeorm migration:revert -d dist/shared/database/data-source.js",
+    "migration:create": "npx typeorm migration:create"
   },
   "dependencies": {
     "@casl/ability": "^6.8.0",

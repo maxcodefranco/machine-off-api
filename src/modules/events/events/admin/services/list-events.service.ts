@@ -29,6 +29,7 @@ export class AdminListEventsService {
     return {
       events: events.map((e) => ({
         id: e.id,
+        slug: e.slug,
         name: e.name,
         location: e.location,
         startDate: e.startDate,

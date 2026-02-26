@@ -3,6 +3,10 @@ import { IsOptional, IsString, IsDateString, IsObject, IsIn, IsNumber, IsArray }
 export class AdminUpdateEventInputDto {
   @IsOptional()
   @IsString()
+  slug?: string;
+
+  @IsOptional()
+  @IsString()
   name?: string;
 
   @IsOptional()

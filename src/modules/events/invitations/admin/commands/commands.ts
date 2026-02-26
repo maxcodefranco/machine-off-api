@@ -18,3 +18,13 @@ export class AdminDeactivateInvitationCommandOutput {
   id: string;
   updatedAt: Date;
 }
+
+export class AdminCheckinParticipantCommandInput {
+  participantId: string;
+  checkin: boolean;
+}
+
+export class AdminCheckinParticipantCommandOutput {
+  id: string;
+  checkedInAt: Date | null;
+}

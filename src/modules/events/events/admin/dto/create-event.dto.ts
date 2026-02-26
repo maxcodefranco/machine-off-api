@@ -3,6 +3,10 @@ import { IsNotEmpty, IsString, IsDateString, IsOptional, IsObject, IsIn, IsNumbe
 export class AdminCreateEventInputDto {
   @IsNotEmpty()
   @IsString()
+  slug: string;
+
+  @IsNotEmpty()
+  @IsString()
   name: string;
 
   @IsNotEmpty()

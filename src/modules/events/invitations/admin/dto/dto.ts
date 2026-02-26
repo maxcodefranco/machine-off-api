@@ -17,6 +17,7 @@ export class AdminInvitationParticipantDto {
   acceptsImageUsage: boolean;
   hasDietaryRestriction: boolean;
   dietaryRestrictionDescription: string | null;
+  checkedInAt: Date | null;
   guests: AdminInvitationGuestDto[];
 }
 

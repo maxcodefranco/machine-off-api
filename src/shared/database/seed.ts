@@ -21,7 +21,7 @@ const dataSource = new DataSource({
     CustomFieldEntity,
     CustomFieldResponseEntity,
   ],
-  synchronize: true,
+  synchronize: false,
 });
 
 async function seed() {
@@ -45,6 +45,7 @@ async function seed() {
 
   // ─── Event ───────────────────────────────────────────────────────────────
   const event = eventRepo.create({
+    slug: 'machine-off-1',
     name: 'Machine.off — Edição #1',
     location: 'Sítio Recanto Verde, Estrada Municipal 140, km 8 — Atibaia, SP',
     startDate: new Date('2026-05-17T00:00:00.000Z'),

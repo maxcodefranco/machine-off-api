@@ -296,6 +296,54 @@
         ]
       }
     },
+    "/admin/invitations/participants/{participantId}/checkin": {
+      "patch": {
+        "operationId": "AdminInvitationsController_checkinParticipant",
+        "parameters": [
+          {
+            "name": "participantId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-admin-password",
+            "required": true,
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminCheckinParticipantInputDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminCheckinParticipantOutputDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Admin / Invitations"
+        ]
+      }
+    },
     "/app/invitations/lookup/{code}": {
       "get": {
         "operationId": "AppInvitationsController_lookupByCode",
@@ -971,6 +1019,9 @@
       "AdminCreateEventInputDto": {
         "type": "object",
         "properties": {
+          "slug": {
+            "type": "string"
+          },
           "name": {
             "type": "string"
           },
@@ -1036,6 +1087,7 @@
           }
         },
         "required": [
+          "slug",
           "name",
           "location",
           "startDate",
@@ -1047,6 +1099,9 @@
       "AdminUpdateEventInputDto": {
         "type": "object",
         "properties": {
+          "slug": {
+            "type": "string"
+          },
           "name": {
             "type": "string"
           },
@@ -1155,6 +1210,9 @@
           "id": {
             "type": "string"
           },
+          "slug": {
+            "type": "string"
+          },
           "name": {
             "type": "string"
           },
@@ -1199,6 +1257,7 @@
           "pricingValue",
           "links",
           "id",
+          "slug",
           "name",
           "location",
           "startDate",
@@ -1272,6 +1331,9 @@
           "id": {
             "type": "string"
           },
+          "slug": {
+            "type": "string"
+          },
           "name": {
             "type": "string"
           },
@@ -1308,6 +1370,7 @@
           "pricingValue",
           "links",
           "id",
+          "slug",
           "name",
           "location",
           "startDate",
@@ -1414,6 +1477,11 @@
             "type": "string",
             "nullable": true
           },
+          "checkedInAt": {
+            "format": "date-time",
+            "type": "string",
+            "nullable": true
+          },
           "guests": {
             "type": "array",
             "items": {
@@ -1430,6 +1498,7 @@
           "acceptsImageUsage",
           "hasDietaryRestriction",
           "dietaryRestrictionDescription",
+          "checkedInAt",
           "guests"
         ]
       },
@@ -1496,6 +1565,34 @@
         "required": [
           "invitations",
           "total"
+        ]
+      },
+      "AdminCheckinParticipantInputDto": {
+        "type": "object",
+        "properties": {
+          "checkin": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "checkin"
+        ]
+      },
+      "AdminCheckinParticipantOutputDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "checkedInAt": {
+            "format": "date-time",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "required": [
+          "id",
+          "checkedInAt"
         ]
       },
       "AppInvitationDto": {

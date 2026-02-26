@@ -4,10 +4,12 @@ import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { Action } from '../../../../domain/index.js';
 import { PoliciesGuard, CheckPolicies } from '../../../../shared/authorization/index.js';
 import { AdminCreateInvitationInputDto } from './dto/create-invitation.dto.js';
+import { AdminCheckinParticipantInputDto, AdminCheckinParticipantOutputDto } from './dto/checkin-participant.dto.js';
 import {
   AdminListInvitationsQueryInput,
   AdminListInvitationsQueryOutput,
 } from './queries/queries.js';
+import { AdminCheckinParticipantCommandInput } from './commands/commands.js';
 
 @ApiTags('Admin / Invitations')
 @Controller('admin/invitations')
@@ -56,6 +58,26 @@ export class AdminInvitationsController {
         eventId,
         page,
         limit,
+      }),
+    );
+  }
+
+  @Patch('participants/:participantId/checkin')
+  @ApiHeader({ name: 'x-admin-password', required: true })
+  async checkinParticipant(
+    @Param('participantId') participantId: string,
+    @Body() input: AdminCheckinParticipantInputDto,
+    @Headers('x-admin-password') password: string,
+  ): Promise<AdminCheckinParticipantOutputDto> {
+    const adminPassword = process.env.ADMIN_PASSWORD ?? 'machineoff2026';
+    if (password !== adminPassword) {
+      throw new UnauthorizedException('Senha inválida.');
+    }
+
+    return this.commandBus.execute(
+      Object.assign(new AdminCheckinParticipantCommandInput(), {
+        participantId,
+        checkin: input.checkin,
       }),
     );
   }

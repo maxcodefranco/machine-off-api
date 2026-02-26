@@ -24,7 +24,9 @@ import { CustomFieldResponseEntity } from './entities/custom-field-response.enti
         CustomFieldEntity,
         CustomFieldResponseEntity,
       ],
-      synchronize: true, // Auto-create tables (dev only)
+      migrations: ['dist/shared/database/migrations/*.js'],
+      migrationsRun: true,
+      synchronize: false,
     }),
   ],
 })

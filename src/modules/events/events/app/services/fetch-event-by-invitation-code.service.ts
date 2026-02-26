@@ -39,6 +39,7 @@ export class AppFetchEventByInvitationCodeService {
     return {
       event: {
         id: event.id,
+        slug: event.slug,
         name: event.name,
         location: event.location,
         startDate: event.startDate,

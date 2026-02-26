@@ -9,6 +9,7 @@ export interface Participant {
   acceptsImageUsage: boolean;
   hasDietaryRestriction: boolean;
   dietaryRestrictionDescription?: string;
+  checkedInAt: Date | null;
   createdAt: Date;
   updatedAt: Date;
 }

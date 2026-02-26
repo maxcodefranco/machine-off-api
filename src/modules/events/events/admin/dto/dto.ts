@@ -2,6 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class AdminEventDto {
   id: string;
+  slug: string;
   name: string;
   location: string;
   startDate: Date;

@@ -6,6 +6,7 @@ export interface EventLinks {
 
 export interface Event {
   id: string;
+  slug: string;
   name: string;
   location: string;
   startDate: Date;
