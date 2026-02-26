@@ -34,7 +34,7 @@ export class AdminUpdateEventInputDto {
   deadline?: string;
 
   @IsOptional()
-  @IsIn(['fixed', 'split', 'rateio'])
+  @IsIn(['fixed', 'split'])
   pricingType?: string;
 
   @IsOptional()
