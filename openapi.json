@@ -1,0 +1,1536 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "AppController_getHello",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "App"
+        ]
+      }
+    },
+    "/admin/events": {
+      "post": {
+        "operationId": "AdminEventsController_createEvent",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminCreateEventInputDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin / Events"
+        ]
+      },
+      "get": {
+        "operationId": "AdminEventsController_listEvents",
+        "parameters": [
+          {
+            "name": "page",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin / Events"
+        ]
+      }
+    },
+    "/admin/events/{id}": {
+      "patch": {
+        "operationId": "AdminEventsController_updateEvent",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminUpdateEventInputDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin / Events"
+        ]
+      },
+      "get": {
+        "operationId": "AdminEventsController_fetchEvent",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin / Events"
+        ]
+      }
+    },
+    "/app/events/by-invitation/{code}": {
+      "get": {
+        "operationId": "AppEventsController_fetchEventByInvitationCode",
+        "parameters": [
+          {
+            "name": "code",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppFetchEventByInvitationCodeQueryOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "App / Events"
+        ]
+      }
+    },
+    "/admin/invitations": {
+      "post": {
+        "operationId": "AdminInvitationsController_createInvitation",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminCreateInvitationInputDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin / Invitations"
+        ]
+      },
+      "get": {
+        "operationId": "AdminInvitationsController_listInvitations",
+        "parameters": [
+          {
+            "name": "eventId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin / Invitations"
+        ]
+      }
+    },
+    "/admin/invitations/{id}/deactivate": {
+      "patch": {
+        "operationId": "AdminInvitationsController_deactivateInvitation",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin / Invitations"
+        ]
+      }
+    },
+    "/admin/invitations/{id}": {
+      "get": {
+        "operationId": "AdminInvitationsController_fetchInvitation",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin / Invitations"
+        ]
+      }
+    },
+    "/app/invitations/lookup/{code}": {
+      "get": {
+        "operationId": "AppInvitationsController_lookupByCode",
+        "parameters": [
+          {
+            "name": "code",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppLookupInvitationByCodeQueryOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "App / Invitations"
+        ]
+      }
+    },
+    "/admin/participants/{id}": {
+      "get": {
+        "operationId": "AdminParticipantsController_fetchParticipant",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin / Participants"
+        ]
+      }
+    },
+    "/admin/participants": {
+      "get": {
+        "operationId": "AdminParticipantsController_listParticipants",
+        "parameters": [
+          {
+            "name": "eventId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "shift",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin / Participants"
+        ]
+      }
+    },
+    "/app/participants": {
+      "post": {
+        "operationId": "AppParticipantsController_createParticipant",
+        "parameters": [
+          {
+            "name": "x-invitation-code",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppCreateParticipantInputDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppCreateParticipantCommandOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "App / Participants"
+        ]
+      }
+    },
+    "/app/participants/{id}": {
+      "patch": {
+        "operationId": "AppParticipantsController_updateParticipant",
+        "parameters": [
+          {
+            "name": "x-invitation-code",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppUpdateParticipantInputDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppUpdateParticipantCommandOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "App / Participants"
+        ]
+      }
+    },
+    "/app/participants/by-invitation/{code}": {
+      "get": {
+        "operationId": "AppParticipantsController_fetchByInvitationCode",
+        "parameters": [
+          {
+            "name": "x-invitation-code",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppFetchParticipantByInvitationCodeQueryOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "App / Participants"
+        ]
+      }
+    },
+    "/admin/guests": {
+      "get": {
+        "operationId": "AdminGuestsController_listGuests",
+        "parameters": [
+          {
+            "name": "eventId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin / Guests"
+        ]
+      }
+    },
+    "/app/guests": {
+      "post": {
+        "operationId": "AppGuestsController_createGuest",
+        "parameters": [
+          {
+            "name": "x-invitation-code",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppCreateGuestInputDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppCreateGuestCommandOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "App / Guests"
+        ]
+      }
+    },
+    "/app/guests/{id}": {
+      "patch": {
+        "operationId": "AppGuestsController_updateGuest",
+        "parameters": [
+          {
+            "name": "x-invitation-code",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppUpdateGuestInputDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppUpdateGuestCommandOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "App / Guests"
+        ]
+      },
+      "delete": {
+        "operationId": "AppGuestsController_deleteGuest",
+        "parameters": [
+          {
+            "name": "x-invitation-code",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppDeleteGuestCommandOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "App / Guests"
+        ]
+      }
+    },
+    "/app/guests/by-participant/{participantId}": {
+      "get": {
+        "operationId": "AppGuestsController_listByParticipant",
+        "parameters": [
+          {
+            "name": "x-invitation-code",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "participantId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppListGuestsByParticipantQueryOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "App / Guests"
+        ]
+      }
+    },
+    "/admin/custom-fields": {
+      "post": {
+        "operationId": "AdminCustomFieldsController_createCustomField",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminCreateCustomFieldInputDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin / Custom Fields"
+        ]
+      },
+      "get": {
+        "operationId": "AdminCustomFieldsController_listCustomFields",
+        "parameters": [
+          {
+            "name": "eventId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin / Custom Fields"
+        ]
+      }
+    },
+    "/admin/custom-fields/{id}": {
+      "patch": {
+        "operationId": "AdminCustomFieldsController_updateCustomField",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin / Custom Fields"
+        ]
+      },
+      "delete": {
+        "operationId": "AdminCustomFieldsController_deleteCustomField",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin / Custom Fields"
+        ]
+      }
+    },
+    "/admin/custom-fields/{id}/responses": {
+      "get": {
+        "operationId": "AdminCustomFieldsController_listResponses",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Admin / Custom Fields"
+        ]
+      }
+    },
+    "/app/custom-fields/responses": {
+      "post": {
+        "operationId": "AppCustomFieldsController_submitResponse",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppSubmitCustomFieldResponseInputDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "App / Custom Fields"
+        ]
+      }
+    },
+    "/app/custom-fields/by-event/{eventId}": {
+      "get": {
+        "operationId": "AppCustomFieldsController_listFieldsForEvent",
+        "parameters": [
+          {
+            "name": "eventId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "App / Custom Fields"
+        ]
+      }
+    },
+    "/app/custom-fields/responses/by-participant/{participantId}": {
+      "get": {
+        "operationId": "AppCustomFieldsController_fetchResponses",
+        "parameters": [
+          {
+            "name": "participantId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "App / Custom Fields"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Machine.off API",
+    "description": "API for event invitation and RSVP management",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "schemas": {
+      "AdminCreateEventInputDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          },
+          "startTime": {
+            "type": "string"
+          },
+          "endTime": {
+            "type": "string"
+          },
+          "orientacoes": {
+            "type": "string"
+          },
+          "deadline": {
+            "type": "string"
+          },
+          "pricingType": {
+            "type": "string",
+            "enum": [
+              "fixed",
+              "split"
+            ]
+          },
+          "pricingValue": {
+            "type": "number"
+          },
+          "links": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "name",
+          "location",
+          "startDate",
+          "startTime",
+          "endTime",
+          "orientacoes"
+        ]
+      },
+      "AdminUpdateEventInputDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          },
+          "startTime": {
+            "type": "string"
+          },
+          "endTime": {
+            "type": "string"
+          },
+          "orientacoes": {
+            "type": "string"
+          },
+          "deadline": {
+            "type": "string"
+          },
+          "pricingType": {
+            "type": "string",
+            "enum": [
+              "fixed",
+              "split"
+            ]
+          },
+          "pricingValue": {
+            "type": "number"
+          },
+          "links": {
+            "type": "object"
+          }
+        }
+      },
+      "AppEventDto": {
+        "type": "object",
+        "properties": {
+          "pricingType": {
+            "type": "string",
+            "enum": [
+              "fixed",
+              "split"
+            ]
+          },
+          "pricingValue": {
+            "type": "number",
+            "nullable": true
+          },
+          "links": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "startDate": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "endDate": {
+            "format": "date-time",
+            "type": "string",
+            "nullable": true
+          },
+          "startTime": {
+            "type": "string"
+          },
+          "endTime": {
+            "type": "string"
+          },
+          "orientacoes": {
+            "type": "string"
+          },
+          "deadline": {
+            "format": "date-time",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "required": [
+          "pricingType",
+          "pricingValue",
+          "links",
+          "id",
+          "name",
+          "location",
+          "startDate",
+          "endDate",
+          "startTime",
+          "endTime",
+          "orientacoes",
+          "deadline"
+        ]
+      },
+      "AppFetchEventByInvitationCodeQueryOutput": {
+        "type": "object",
+        "properties": {
+          "event": {
+            "$ref": "#/components/schemas/AppEventDto"
+          }
+        },
+        "required": [
+          "event"
+        ]
+      },
+      "AdminCreateInvitationInputDto": {
+        "type": "object",
+        "properties": {
+          "eventId": {
+            "type": "string"
+          },
+          "guestName": {
+            "type": "string"
+          },
+          "guestPhone": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "eventId",
+          "guestName"
+        ]
+      },
+      "AppInvitationDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "guestName": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "hasExistingParticipant": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "guestName",
+          "eventId",
+          "hasExistingParticipant"
+        ]
+      },
+      "AppLookupInvitationByCodeQueryOutput": {
+        "type": "object",
+        "properties": {
+          "invitation": {
+            "$ref": "#/components/schemas/AppInvitationDto"
+          }
+        },
+        "required": [
+          "invitation"
+        ]
+      },
+      "AppCreateParticipantInputDto": {
+        "type": "object",
+        "properties": {
+          "invitationCode": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "document": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "shifts": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "lunch",
+                "dinner"
+              ]
+            }
+          },
+          "acceptsImageUsage": {
+            "type": "boolean"
+          },
+          "hasDietaryRestriction": {
+            "type": "boolean"
+          },
+          "dietaryRestrictionDescription": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "invitationCode",
+          "name",
+          "email",
+          "phone",
+          "shifts",
+          "acceptsImageUsage",
+          "hasDietaryRestriction"
+        ]
+      },
+      "AppCreateParticipantCommandOutput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "createdAt"
+        ]
+      },
+      "AppUpdateParticipantInputDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "document": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "shifts": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "lunch",
+                "dinner"
+              ]
+            }
+          },
+          "acceptsImageUsage": {
+            "type": "boolean"
+          },
+          "hasDietaryRestriction": {
+            "type": "boolean"
+          },
+          "dietaryRestrictionDescription": {
+            "type": "string"
+          }
+        }
+      },
+      "AppUpdateParticipantCommandOutput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "updatedAt"
+        ]
+      },
+      "AppParticipantDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "invitationId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "document": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "shifts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "acceptsImageUsage": {
+            "type": "boolean"
+          },
+          "hasDietaryRestriction": {
+            "type": "boolean"
+          },
+          "dietaryRestrictionDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "invitationId",
+          "name",
+          "email",
+          "phone",
+          "shifts",
+          "acceptsImageUsage",
+          "hasDietaryRestriction",
+          "dietaryRestrictionDescription",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "AppFetchParticipantByInvitationCodeQueryOutput": {
+        "type": "object",
+        "properties": {
+          "participant": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AppParticipantDto"
+              }
+            ]
+          }
+        }
+      },
+      "AppCreateGuestInputDto": {
+        "type": "object",
+        "properties": {
+          "participantId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "isChild": {
+            "type": "boolean"
+          },
+          "age": {
+            "type": "number"
+          },
+          "hasDietaryRestriction": {
+            "type": "boolean"
+          },
+          "dietaryRestrictionDescription": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "participantId",
+          "name",
+          "isChild",
+          "hasDietaryRestriction"
+        ]
+      },
+      "AppCreateGuestCommandOutput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "createdAt"
+        ]
+      },
+      "AppUpdateGuestInputDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "isChild": {
+            "type": "boolean"
+          },
+          "age": {
+            "type": "number"
+          },
+          "hasDietaryRestriction": {
+            "type": "boolean"
+          },
+          "dietaryRestrictionDescription": {
+            "type": "string"
+          }
+        }
+      },
+      "AppUpdateGuestCommandOutput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "updatedAt"
+        ]
+      },
+      "AppDeleteGuestCommandOutput": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      },
+      "AppGuestDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "participantId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "isChild": {
+            "type": "boolean"
+          },
+          "age": {
+            "type": "number",
+            "nullable": true
+          },
+          "hasDietaryRestriction": {
+            "type": "boolean"
+          },
+          "dietaryRestrictionDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updatedAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "participantId",
+          "name",
+          "isChild",
+          "age",
+          "hasDietaryRestriction",
+          "dietaryRestrictionDescription",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "AppListGuestsByParticipantQueryOutput": {
+        "type": "object",
+        "properties": {
+          "guests": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppGuestDto"
+            }
+          }
+        },
+        "required": [
+          "guests"
+        ]
+      },
+      "AdminCreateCustomFieldInputDto": {
+        "type": "object",
+        "properties": {
+          "eventId": {
+            "type": "string"
+          },
+          "key": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "text",
+              "boolean",
+              "select",
+              "multi_select"
+            ]
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "order": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "eventId",
+          "key",
+          "label",
+          "type",
+          "required",
+          "order"
+        ]
+      },
+      "AppSubmitCustomFieldResponseInputDto": {
+        "type": "object",
+        "properties": {
+          "participantId": {
+            "type": "string"
+          },
+          "customFieldId": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "participantId",
+          "customFieldId",
+          "value"
+        ]
+      }
+    }
+  }
+}
