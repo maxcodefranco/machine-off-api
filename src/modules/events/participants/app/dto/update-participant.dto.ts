@@ -1,5 +1,4 @@
-import { IsOptional, IsString, IsEmail, IsBoolean, IsArray, IsEnum } from 'class-validator';
-import { ShiftType } from '../../../../../domain/index.js';
+import { IsOptional, IsString, IsEmail, IsBoolean, IsArray } from 'class-validator';
 
 export class AppUpdateParticipantInputDto {
   @IsOptional()
@@ -20,8 +19,8 @@ export class AppUpdateParticipantInputDto {
 
   @IsOptional()
   @IsArray()
-  @IsEnum(ShiftType, { each: true })
-  shifts?: ShiftType[];
+  @IsString({ each: true })
+  shifts?: string[];
 
   @IsOptional()
   @IsBoolean()

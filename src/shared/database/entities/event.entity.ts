@@ -25,6 +25,9 @@ export class EventEntity {
   @Column()
   endTime: string;
 
+  @Column({ type: 'jsonb', default: [] })
+  shiftOptions: { key: string; label: string; startTime: string; endTime: string }[];
+
   @Column({ type: 'text' })
   orientacoes: string;
 

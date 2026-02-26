@@ -51,6 +51,10 @@ async function seed() {
     endDate: null,
     startTime: '09:00',
     endTime: '22:00',
+    shiftOptions: [
+      { key: 'lunch', label: 'Almoço', startTime: '12:00', endTime: '18:00' },
+      { key: 'dinner', label: 'Janta', startTime: '18:00', endTime: '21:30' },
+    ],
     orientacoes: `## Como funciona o Machine.off?
 
 O **Machine.off** é um retiro desconectado de tecnologia para desenvolvedores, designers e entusiastas de produto. A ideia é simples: deixar as máquinas de lado por um dia inteiro e recuperar o prazer das conversas presenciais, da natureza e do descanso real.

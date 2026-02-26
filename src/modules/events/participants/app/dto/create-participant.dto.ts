@@ -1,5 +1,4 @@
-import { IsNotEmpty, IsString, IsOptional, IsEmail, IsBoolean, IsArray, IsEnum } from 'class-validator';
-import { ShiftType } from '../../../../../domain/index.js';
+import { IsNotEmpty, IsString, IsOptional, IsEmail, IsBoolean, IsArray } from 'class-validator';
 
 export class AppCreateParticipantInputDto {
   @IsNotEmpty()
@@ -22,8 +21,8 @@ export class AppCreateParticipantInputDto {
   phone: string;
 
   @IsArray()
-  @IsEnum(ShiftType, { each: true })
-  shifts: ShiftType[];
+  @IsString({ each: true })
+  shifts: string[];
 
   @IsBoolean()
   acceptsImageUsage: boolean;

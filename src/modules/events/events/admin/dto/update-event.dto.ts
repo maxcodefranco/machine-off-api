@@ -1,4 +1,4 @@
-import { IsOptional, IsString, IsDateString, IsObject, IsIn, IsNumber } from 'class-validator';
+import { IsOptional, IsString, IsDateString, IsObject, IsIn, IsNumber, IsArray } from 'class-validator';
 
 export class AdminUpdateEventInputDto {
   @IsOptional()
@@ -24,6 +24,10 @@ export class AdminUpdateEventInputDto {
   @IsOptional()
   @IsString()
   endTime?: string;
+
+  @IsOptional()
+  @IsArray()
+  shiftOptions?: { key: string; label: string; startTime: string; endTime: string }[];
 
   @IsOptional()
   @IsString()

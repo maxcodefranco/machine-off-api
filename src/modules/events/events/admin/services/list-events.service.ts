@@ -35,6 +35,7 @@ export class AdminListEventsService {
         endDate: e.endDate,
         startTime: e.startTime,
         endTime: e.endTime,
+        shiftOptions: e.shiftOptions ?? [],
         orientacoes: e.orientacoes,
         deadline: e.deadline,
         pricingType: e.pricingType,

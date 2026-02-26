@@ -8,6 +8,21 @@ export class AppEventDto {
   endDate: Date | null;
   startTime: string;
   endTime: string;
+
+  @ApiProperty({
+    type: 'array',
+    items: {
+      type: 'object',
+      properties: {
+        key: { type: 'string' },
+        label: { type: 'string' },
+        startTime: { type: 'string' },
+        endTime: { type: 'string' },
+      },
+    },
+  })
+  shiftOptions: { key: string; label: string; startTime: string; endTime: string }[];
+
   orientacoes: string;
   deadline: Date | null;
 

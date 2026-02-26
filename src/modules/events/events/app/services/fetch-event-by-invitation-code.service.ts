@@ -45,6 +45,7 @@ export class AppFetchEventByInvitationCodeService {
         endDate: event.endDate,
         startTime: event.startTime,
         endTime: event.endTime,
+        shiftOptions: event.shiftOptions ?? [],
         orientacoes: event.orientacoes,
         deadline: event.deadline,
         pricingType: event.pricingType,

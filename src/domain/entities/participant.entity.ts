@@ -1,5 +1,3 @@
-import { ShiftType } from '../enums/shift-type.enum.js';
-
 export interface Participant {
   id: string;
   invitationId: string;
@@ -7,7 +5,7 @@ export interface Participant {
   document?: string;
   email: string;
   phone: string;
-  shifts: ShiftType[];
+  shifts: string[];
   acceptsImageUsage: boolean;
   hasDietaryRestriction: boolean;
   dietaryRestrictionDescription?: string;

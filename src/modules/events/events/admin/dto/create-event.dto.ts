@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, IsDateString, IsOptional, IsObject, IsIn, IsNumber } from 'class-validator';
+import { IsNotEmpty, IsString, IsDateString, IsOptional, IsObject, IsIn, IsNumber, IsArray } from 'class-validator';
 
 export class AdminCreateEventInputDto {
   @IsNotEmpty()
@@ -23,6 +23,10 @@ export class AdminCreateEventInputDto {
   @IsNotEmpty()
   @IsString()
   endTime: string;
+
+  @IsOptional()
+  @IsArray()
+  shiftOptions?: { key: string; label: string; startTime: string; endTime: string }[];
 
   @IsNotEmpty()
   @IsString()

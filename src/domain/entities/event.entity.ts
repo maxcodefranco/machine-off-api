@@ -12,6 +12,7 @@ export interface Event {
   endDate: Date | null;
   startTime: string;
   endTime: string;
+  shiftOptions: { key: string; label: string; startTime: string; endTime: string }[];
   orientacoes: string;
   deadline: Date | null;
   pricingType: 'fixed' | 'split';

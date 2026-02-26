@@ -989,6 +989,32 @@
           "endTime": {
             "type": "string"
           },
+          "shiftOptions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "startTime": {
+                  "type": "string"
+                },
+                "endTime": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "key",
+                "label",
+                "startTime",
+                "endTime"
+              ]
+            }
+          },
           "orientacoes": {
             "type": "string"
           },
@@ -1039,6 +1065,32 @@
           "endTime": {
             "type": "string"
           },
+          "shiftOptions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "startTime": {
+                  "type": "string"
+                },
+                "endTime": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "key",
+                "label",
+                "startTime",
+                "endTime"
+              ]
+            }
+          },
           "orientacoes": {
             "type": "string"
           },
@@ -1063,6 +1115,26 @@
       "AdminEventDto": {
         "type": "object",
         "properties": {
+          "shiftOptions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "startTime": {
+                  "type": "string"
+                },
+                "endTime": {
+                  "type": "string"
+                }
+              }
+            }
+          },
           "pricingType": {
             "type": "string",
             "enum": [
@@ -1122,6 +1194,7 @@
           }
         },
         "required": [
+          "shiftOptions",
           "pricingType",
           "pricingValue",
           "links",
@@ -1159,6 +1232,26 @@
       "AppEventDto": {
         "type": "object",
         "properties": {
+          "shiftOptions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "startTime": {
+                  "type": "string"
+                },
+                "endTime": {
+                  "type": "string"
+                }
+              }
+            }
+          },
           "pricingType": {
             "type": "string",
             "enum": [
@@ -1210,6 +1303,7 @@
           }
         },
         "required": [
+          "shiftOptions",
           "pricingType",
           "pricingValue",
           "links",
@@ -1460,11 +1554,7 @@
           "shifts": {
             "type": "array",
             "items": {
-              "type": "string",
-              "enum": [
-                "lunch",
-                "dinner"
-              ]
+              "type": "string"
             }
           },
           "acceptsImageUsage": {
@@ -1522,11 +1612,7 @@
           "shifts": {
             "type": "array",
             "items": {
-              "type": "string",
-              "enum": [
-                "lunch",
-                "dinner"
-              ]
+              "type": "string"
             }
           },
           "acceptsImageUsage": {

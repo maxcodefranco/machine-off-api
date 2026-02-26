@@ -1,12 +1,10 @@
-import { ShiftType } from '../../../../../domain/index.js';
-
 export class AppCreateParticipantCommandInput {
   invitationCode: string;
   name: string;
   document?: string;
   email: string;
   phone: string;
-  shifts: ShiftType[];
+  shifts: string[];
   acceptsImageUsage: boolean;
   hasDietaryRestriction: boolean;
   dietaryRestrictionDescription?: string;
@@ -23,7 +21,7 @@ export class AppUpdateParticipantCommandInput {
   document?: string;
   email?: string;
   phone?: string;
-  shifts?: ShiftType[];
+  shifts?: string[];
   acceptsImageUsage?: boolean;
   hasDietaryRestriction?: boolean;
   dietaryRestrictionDescription?: string;
