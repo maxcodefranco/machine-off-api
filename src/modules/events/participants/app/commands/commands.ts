@@ -33,3 +33,11 @@ export class AppUpdateParticipantCommandOutput {
   id: string;
   updatedAt: Date;
 }
+
+export class AppDeleteParticipantCommandInput {
+  participantId: string;
+}
+
+export class AppDeleteParticipantCommandOutput {
+  success: boolean;
+}

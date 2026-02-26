@@ -1,4 +1,4 @@
-import { Controller, Post, Patch, Get, Param, Body, UseGuards } from '@nestjs/common';
+import { Controller, Post, Patch, Get, Delete, Param, Body, UseGuards } from '@nestjs/common';
 import { ApiTags, ApiHeader } from '@nestjs/swagger';
 import { InvitationCodeGuard } from '../../../../shared/authorization/index.js';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
@@ -9,6 +9,8 @@ import {
   AppCreateParticipantCommandOutput,
   AppUpdateParticipantCommandInput,
   AppUpdateParticipantCommandOutput,
+  AppDeleteParticipantCommandInput,
+  AppDeleteParticipantCommandOutput,
 } from './commands/commands.js';
 import {
   AppFetchParticipantByInvitationCodeQueryInput,
@@ -42,6 +44,17 @@ export class AppParticipantsController {
     return this.commandBus.execute(
       Object.assign(new AppUpdateParticipantCommandInput(), {
         ...input,
+        participantId: id,
+      }),
+    );
+  }
+
+  @Delete(':id')
+  async deleteParticipant(
+    @Param('id') id: string,
+  ): Promise<AppDeleteParticipantCommandOutput> {
+    return this.commandBus.execute(
+      Object.assign(new AppDeleteParticipantCommandInput(), {
         participantId: id,
       }),
     );

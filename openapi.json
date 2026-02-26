@@ -452,6 +452,42 @@
         "tags": [
           "App / Participants"
         ]
+      },
+      "delete": {
+        "operationId": "AppParticipantsController_deleteParticipant",
+        "parameters": [
+          {
+            "name": "x-invitation-code",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppDeleteParticipantCommandOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "App / Participants"
+        ]
       }
     },
     "/app/participants/by-invitation/{code}": {
@@ -1241,6 +1277,17 @@
         "required": [
           "id",
           "updatedAt"
+        ]
+      },
+      "AppDeleteParticipantCommandOutput": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "success"
         ]
       },
       "AppParticipantDto": {
