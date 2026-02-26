@@ -999,7 +999,8 @@
             "type": "string",
             "enum": [
               "fixed",
-              "split"
+              "split",
+              "rateio"
             ]
           },
           "pricingValue": {
@@ -1049,7 +1050,8 @@
             "type": "string",
             "enum": [
               "fixed",
-              "split"
+              "split",
+              "rateio"
             ]
           },
           "pricingValue": {
@@ -1067,7 +1069,8 @@
             "type": "string",
             "enum": [
               "fixed",
-              "split"
+              "split",
+              "rateio"
             ]
           },
           "pricingValue": {
@@ -1163,7 +1166,8 @@
             "type": "string",
             "enum": [
               "fixed",
-              "split"
+              "split",
+              "rateio"
             ]
           },
           "pricingValue": {

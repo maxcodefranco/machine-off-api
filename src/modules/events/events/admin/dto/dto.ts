@@ -11,7 +11,7 @@ export class AdminEventDto {
   orientacoes: string;
   deadline: Date | null;
 
-  @ApiProperty({ enum: ['fixed', 'split'] })
+  @ApiProperty({ enum: ['fixed', 'split', 'rateio'] })
   pricingType: string;
 
   @ApiProperty({ type: 'number', nullable: true })
