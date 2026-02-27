@@ -344,6 +344,54 @@
         ]
       }
     },
+    "/admin/invitations/guests/{guestId}/checkin": {
+      "patch": {
+        "operationId": "AdminInvitationsController_checkinGuest",
+        "parameters": [
+          {
+            "name": "guestId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-admin-password",
+            "required": true,
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminCheckinParticipantInputDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminCheckinParticipantOutputDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Admin / Invitations"
+        ]
+      }
+    },
     "/app/invitations/lookup/{code}": {
       "get": {
         "operationId": "AppInvitationsController_lookupByCode",
@@ -1432,6 +1480,11 @@
           "dietaryRestrictionDescription": {
             "type": "string",
             "nullable": true
+          },
+          "checkedInAt": {
+            "format": "date-time",
+            "type": "string",
+            "nullable": true
           }
         },
         "required": [
@@ -1440,7 +1493,8 @@
           "isChild",
           "age",
           "hasDietaryRestriction",
-          "dietaryRestrictionDescription"
+          "dietaryRestrictionDescription",
+          "checkedInAt"
         ]
       },
       "AdminInvitationParticipantDto": {

@@ -2,6 +2,8 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { InvitationEntity } from '../../../../../shared/database/entities/invitation.entity.js';
+import { AuditLogService } from '../../../../../shared/audit-log/audit-log.service.js';
+import { AuditLogType } from '../../../../../domain/enums/audit-log-type.enum.js';
 import {
   AppFetchEventByInvitationCodeQueryInput,
   AppFetchEventByInvitationCodeQueryOutput,
@@ -12,6 +14,7 @@ export class AppFetchEventByInvitationCodeService {
   constructor(
     @InjectRepository(InvitationEntity)
     private readonly invitationRepository: Repository<InvitationEntity>,
+    private readonly auditLogService: AuditLogService,
   ) {}
 
   async execute(
@@ -33,6 +36,16 @@ export class AppFetchEventByInvitationCodeService {
         `Invitation with code "${input.invitationCode}" is not active.`,
       );
     }
+
+    this.auditLogService.log({
+      type: AuditLogType.access_invite,
+      metadata: {
+        invitationId: invitation.id,
+        code: input.invitationCode,
+        ip: input.requestIp,
+        userAgent: input.requestUserAgent,
+      },
+    });
 
     const { event } = invitation;
 

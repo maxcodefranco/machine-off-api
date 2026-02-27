@@ -5,17 +5,20 @@ import { AuthorizationModule } from '../../../../shared/authorization/authorizat
 import { InvitationEntity } from '../../../../shared/database/entities/invitation.entity.js';
 import { EventEntity } from '../../../../shared/database/entities/event.entity.js';
 import { ParticipantEntity } from '../../../../shared/database/entities/participant.entity.js';
+import { GuestEntity } from '../../../../shared/database/entities/guest.entity.js';
 import { AdminInvitationsController } from './admin-invitations.controller.js';
 import { AdminListInvitationsQueryHandler } from './queries/list-invitations.handler.js';
 import { AdminListInvitationsService } from './services/list-invitations.service.js';
 import { AdminCheckinParticipantCommandHandler } from './commands/checkin-participant.handler.js';
 import { AdminCheckinParticipantService } from './services/checkin-participant.service.js';
+import { AdminCheckinGuestCommandHandler } from './commands/checkin-guest.handler.js';
+import { AdminCheckinGuestService } from './services/checkin-guest.service.js';
 
 @Module({
   imports: [
     CqrsModule,
     AuthorizationModule,
-    TypeOrmModule.forFeature([InvitationEntity, EventEntity, ParticipantEntity]),
+    TypeOrmModule.forFeature([InvitationEntity, EventEntity, ParticipantEntity, GuestEntity]),
   ],
   controllers: [AdminInvitationsController],
   providers: [
@@ -23,6 +26,8 @@ import { AdminCheckinParticipantService } from './services/checkin-participant.s
     AdminListInvitationsService,
     AdminCheckinParticipantCommandHandler,
     AdminCheckinParticipantService,
+    AdminCheckinGuestCommandHandler,
+    AdminCheckinGuestService,
   ],
 })
 export class AdminInvitationsModule {}

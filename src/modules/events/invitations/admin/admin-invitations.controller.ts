@@ -9,7 +9,7 @@ import {
   AdminListInvitationsQueryInput,
   AdminListInvitationsQueryOutput,
 } from './queries/queries.js';
-import { AdminCheckinParticipantCommandInput } from './commands/commands.js';
+import { AdminCheckinParticipantCommandInput, AdminCheckinGuestCommandInput } from './commands/commands.js';
 
 @ApiTags('Admin / Invitations')
 @Controller('admin/invitations')
@@ -77,6 +77,26 @@ export class AdminInvitationsController {
     return this.commandBus.execute(
       Object.assign(new AdminCheckinParticipantCommandInput(), {
         participantId,
+        checkin: input.checkin,
+      }),
+    );
+  }
+
+  @Patch('guests/:guestId/checkin')
+  @ApiHeader({ name: 'x-admin-password', required: true })
+  async checkinGuest(
+    @Param('guestId') guestId: string,
+    @Body() input: AdminCheckinParticipantInputDto,
+    @Headers('x-admin-password') password: string,
+  ): Promise<AdminCheckinParticipantOutputDto> {
+    const adminPassword = process.env.ADMIN_PASSWORD ?? 'machineoff2026';
+    if (password !== adminPassword) {
+      throw new UnauthorizedException('Senha inválida.');
+    }
+
+    return this.commandBus.execute(
+      Object.assign(new AdminCheckinGuestCommandInput(), {
+        guestId,
         checkin: input.checkin,
       }),
     );

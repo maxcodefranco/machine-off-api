@@ -28,3 +28,13 @@ export class AdminCheckinParticipantCommandOutput {
   id: string;
   checkedInAt: Date | null;
 }
+
+export class AdminCheckinGuestCommandInput {
+  guestId: string;
+  checkin: boolean;
+}
+
+export class AdminCheckinGuestCommandOutput {
+  id: string;
+  checkedInAt: Date | null;
+}

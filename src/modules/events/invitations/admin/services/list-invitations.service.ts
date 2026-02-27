@@ -76,6 +76,7 @@ export class AdminListInvitationsService {
                 hasDietaryRestriction: g.hasDietaryRestriction,
                 dietaryRestrictionDescription:
                   g.dietaryRestrictionDescription,
+                checkedInAt: g.checkedInAt,
               })),
             }
           : undefined,

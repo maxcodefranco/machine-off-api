@@ -5,6 +5,7 @@ import { ParticipantEntity } from './entities/participant.entity.js';
 import { GuestEntity } from './entities/guest.entity.js';
 import { CustomFieldEntity } from './entities/custom-field.entity.js';
 import { CustomFieldResponseEntity } from './entities/custom-field-response.entity.js';
+import { AuditLogEntity } from './entities/audit-log.entity.js';
 
 const AppDataSource = new DataSource({
   type: 'postgres',
@@ -20,6 +21,7 @@ const AppDataSource = new DataSource({
     GuestEntity,
     CustomFieldEntity,
     CustomFieldResponseEntity,
+    AuditLogEntity,
   ],
   migrations: ['dist/shared/database/migrations/*.js'],
   synchronize: false,

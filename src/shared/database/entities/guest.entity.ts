@@ -24,6 +24,9 @@ export class GuestEntity {
   @Column({ type: 'varchar', nullable: true })
   dietaryRestrictionDescription: string | null;
 
+  @Column({ type: 'timestamp', nullable: true })
+  checkedInAt: Date | null;
+
   @CreateDateColumn()
   createdAt: Date;
 

@@ -5,6 +5,7 @@ export class AdminInvitationGuestDto {
   age: number | null;
   hasDietaryRestriction: boolean;
   dietaryRestrictionDescription: string | null;
+  checkedInAt: Date | null;
 }
 
 export class AdminInvitationParticipantDto {
